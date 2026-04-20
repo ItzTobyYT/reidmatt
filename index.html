@@ -109,7 +109,8 @@
         }
 
         .image-grid {
-            column-count: 3; 
+            /* Automatically sorts columns based on width */
+            column-width: 320px; 
             column-gap: 20px; 
         }
 
@@ -117,7 +118,7 @@
             break-inside: avoid; 
             margin-bottom: 20px; 
             overflow: hidden; 
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         .image-item img {
@@ -159,12 +160,10 @@
             margin-bottom: 20px;
         }
 
-        /* Custom Text Colors based on your mockups */
         .text-magenta { color: #ff01e6; }
         .text-cyan { color: #00ffff; }
         .text-yellow { color: #ffff00; font-weight: bold; }
         
-        /* Video Thumbnail Styles */
         .video-container {
             display: flex;
             flex-direction: column;
@@ -204,7 +203,7 @@
             padding: 15px 25px;
             border-radius: 5px;
             font-weight: bold;
-            font-style: italic; /* Added italic font style */
+            font-style: italic; 
             font-size: 1rem;
             z-index: 2000; 
             opacity: 0; 
@@ -290,7 +289,7 @@
             }
             .main-content {
                 width: 100%;
-                padding: 30px 20px;
+                padding: 30px 20px; 
             }
             .modal-content {
                 max-width: 95%;
@@ -302,8 +301,20 @@
             }
         }
 
+        /* --- MOBILE LAYOUT --- */
         @media (max-width: 480px) {
-            .image-grid { column-count: 1; }
+            .main-content {
+                padding: 20px 10px; 
+            }
+            .image-grid { 
+                column-count: 2; /* 2 Columns */
+                column-width: auto; 
+                column-gap: 12px; /* Increased breathable gap */
+            }
+            .image-item {
+                margin-bottom: 12px; /* Increased breathable gap */
+                border-radius: 6px; 
+            }
         }
     </style>
 </head>
@@ -408,7 +419,7 @@
                     </div>
 
                     <div class="resolve-splash-container">
-                         <img src="AboutMe\editing softwares.png" alt="DaVinci Resolve Studio Splash Screen" class="resolve-splash-img" style="width:100%; border-radius: 8px;">
+                         <img src="AboutMe/editing softwares.png" alt="DaVinci Resolve Studio Splash Screen" class="resolve-splash-img" style="width:100%; border-radius: 8px;">
                     </div>
 
                     <div class="about-block">
@@ -420,10 +431,10 @@
                         
                         <div class="video-container">
                             <a href="https://www.youtube.com/watch?v=GPWcXqtpOBQ1" target="_blank">
-                                <img src="AboutMe\SS_3.png" alt="Hacker Motion Graphic" class="video-thumbnail">
+                                <img src="AboutMe/SS_3.png" alt="Hacker Motion Graphic" class="video-thumbnail">
                             </a>
                             <a href="https://www.youtube.com/watch?v=GPWcXqtpOBQ" target="_blank">
-                                <img src="AboutMe\SS_2.png" alt="DepEd Budget Graphic" class="video-thumbnail">
+                                <img src="AboutMe/SS_2.png" alt="DepEd Budget Graphic" class="video-thumbnail">
                             </a>
                         </div>
                     </div>
@@ -436,12 +447,12 @@
 
                         <div class="video-container">
                             <a href="https://www.youtube.com/watch?v=YOUR_LINK_HERE" target="_blank">
-                                <img src="AboutMe\TROPHY.jpg" alt="Festival Cinematography" class="video-thumbnail">
+                                <img src="AboutMe/TROPHY.jpg" alt="Festival Cinematography" class="video-thumbnail">
                             </a>
                             <a href="https://www.youtube.com/watch?v=dRKKZPG2dPc" target="_blank">
-                                <img src="AboutMe\SS_1.png" alt="Trophy Cinematography" class="video-thumbnail">
-                                <img src="AboutMe\SS_CINEMA.jpg" alt="Trophy Cinematography" class="video-thumbnail">
-                                <img src="AboutMe\SSS_CINEMA2.jpg" alt="Trophy Cinematography" class="video-thumbnail">
+                                <img src="AboutMe/SS_1.png" alt="Trophy Cinematography" class="video-thumbnail">
+                                <img src="AboutMe/SS_CINEMA.jpg" alt="Trophy Cinematography" class="video-thumbnail">
+                                <img src="AboutMe/SSS_CINEMA2.jpg" alt="Trophy Cinematography" class="video-thumbnail">
                             </a>
                         </div>
                     </div>
@@ -450,7 +461,7 @@
                         <h2 class="text-magenta" style="font-size: 2.5rem;">Photography</h2>
                         <p><span class="text-cyan" style="font-weight: bold;">4 years</span> of <span class="text-yellow">Photography Experience</span>,</p>
                         <p>Specializing with Cinematic and Dramatic Photography Styled high-quality smartphone captures. All images are shot in Auto Mode with no post-processing / editing applied. Offering pure Leica-colored DSLR-level quality straight from the camera.</p>
-                             <img src="AboutMe\SS_PHOTO.png" alt="Trophy Cinematography" class="video-thumbnail">
+                             <img src="AboutMe/SS_PHOTO.png" alt="Trophy Cinematography" class="video-thumbnail">
                         
                         <hr class="divider">
                         
@@ -486,10 +497,8 @@
             }, 3000);
         }
 
-        // Trigger immediately (with a tiny 100ms delay so the CSS slide animation has time to work)
+        // Trigger immediately
         setTimeout(showLoading, 100);
-
-        window.addEventListener('load', showLoading);
 
         // 2. --- FULL SCREEN MODAL LOGIC ---
         const modal = document.getElementById("imageModal");
